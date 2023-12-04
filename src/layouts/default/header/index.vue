@@ -1,0 +1,222 @@
+<template>
+  <Header :class="getHeaderClass">
+    <!-- left start -->
+    <div :class="`${prefixCls}-left`">
+      <!-- logo -->
+      <AppLogo
+        v-if="getShowHeaderLogo || getIsMobile"
+        :class="`${prefixCls}-logo`"
+        :theme="getHeaderTheme"
+        :style="getLogoWidth"
+      />
+      <LayoutTrigger
+        v-if="
+          (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
+        "
+        :theme="getHeaderTheme"
+        :sider="false"
+      />
+      <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
+    </div>
+    <!-- left end -->
+
+    <!-- menu start -->
+    <div :class="`${prefixCls}-menu`" v-if="getShowTopMenu && !getIsMobile">
+      <LayoutMenu
+        :isHorizontal="true"
+        :theme="getHeaderTheme"
+        :splitType="getSplitType"
+        :menuMode="getMenuMode"
+      />
+    </div>
+    <!-- menu-end -->
+
+    <!-- action  -->
+    <div :class="`${prefixCls}-action`">
+      <!-- <AppSearch :class="`${prefixCls}-action__item `" v-if="getShowSearch" /> -->
+
+      <!-- <ErrorAction v-if="getUseErrorHandle" :class="`${prefixCls}-action__item error-action`" /> -->
+
+      <!-- <Notify v-if="getShowNotice" :class="`${prefixCls}-action__item notify-item`" /> -->
+      <div @click="goToMainApp" :style="{'cursor': 'pointer',color:primaryColor}" class="mr-2"><SelectOutlined :style="{color:primaryColor}"></SelectOutlined>返回主应用</div>
+
+      <!-- <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" /> -->
+
+      <!-- <AppLocalePicker
+        v-if="getShowLocalePicker"
+        :reload="true"
+        :showText="false"
+        :class="`${prefixCls}-action__item`"
+      /> -->
+
+      <UserDropDown :theme="getHeaderTheme" />
+      <div class="xl:mx-4 text-l" style="cursor: pointer;" @click="handleLoginOut">
+        <LoginOutlined></LoginOutlined>
+        <span style="color: #000;">退出系统</span>
+      </div>
+      <!-- <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" /> -->
+    </div>
+  </Header>
+</template>
+<script lang="ts">
+  import { defineComponent, unref, computed } from 'vue';
+
+  import { propTypes } from '/src/utils/propTypes';
+
+  import { Layout } from 'ant-design-vue';
+  import { AppLogo } from '/src/components/Application';
+  import LayoutMenu from '../menu/index.vue';
+  import LayoutTrigger from '../trigger/index.vue';
+
+  import { AppSearch } from '/src/components/Application';
+
+  import { useHeaderSetting } from '/src/hooks/setting/useHeaderSetting';
+  import { useMenuSetting } from '/src/hooks/setting/useMenuSetting';
+  import { useRootSetting } from '/src/hooks/setting/useRootSetting';
+
+  import { MenuModeEnum, MenuSplitTyeEnum } from '/src/enums/menuEnum';
+  import { SettingButtonPositionEnum } from '/src/enums/appEnum';
+  import { AppLocalePicker } from '/src/components/Application';
+
+  import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';
+  import { useAppInject } from '/src/hooks/web/useAppInject';
+import { useDesign } from '/src/hooks/web/useDesign';
+  import { Button } from 'ant-design-vue'
+  import { LoginOutlined,SelectOutlined } from '@ant-design/icons-vue'
+  import { createAsyncComponent } from '/src/utils/factory/createAsyncComponent';
+  import { useLocale } from '/src/locales/useLocale';
+import { useUserStore } from '/src/store/modules/user';
+import { primaryColor } from '../../../../build/config/themeConfig';
+  const userStore = useUserStore();
+  export default defineComponent({
+    name: 'LayoutHeader',
+    components: {
+      SelectOutlined,
+      Button,
+      LoginOutlined,
+      Header: Layout.Header,
+      AppLogo,
+      LayoutTrigger,
+      LayoutBreadcrumb,
+      LayoutMenu,
+      UserDropDown,
+      AppLocalePicker,
+      FullScreen,
+      Notify,
+      AppSearch,
+      ErrorAction,
+      SettingDrawer: createAsyncComponent(() => import('/src/layouts/default/setting/index.vue'), {
+        loading: true,
+      }),
+    },
+    props: {
+      fixed: propTypes.bool,
+    },
+    setup(props) {
+      const { prefixCls } = useDesign('layout-header');
+      const {
+        getShowTopMenu,
+        getShowHeaderTrigger,
+        getSplit,
+        getIsMixMode,
+        getMenuWidth,
+        getIsMixSidebar,
+      } = useMenuSetting();
+      const { getUseErrorHandle, getShowSettingButton, getSettingButtonPosition } =
+        useRootSetting();
+
+      const {
+        getHeaderTheme,
+        getShowFullScreen,
+        getShowNotice,
+        getShowContent,
+        getShowBread,
+        getShowHeaderLogo,
+        getShowHeader,
+        getShowSearch,
+      } = useHeaderSetting();
+
+      const { getShowLocalePicker } = useLocale();
+
+      const { getIsMobile } = useAppInject();
+
+      const getHeaderClass = computed(() => {
+        const theme = unref(getHeaderTheme);
+        return [
+          prefixCls,
+          {
+            [`${prefixCls}--fixed`]: props.fixed,
+            [`${prefixCls}--mobile`]: unref(getIsMobile),
+            [`${prefixCls}--${theme}`]: theme,
+          },
+        ];
+      });
+
+      const getShowSetting = computed(() => {
+        if (!unref(getShowSettingButton)) {
+          return false;
+        }
+        const settingButtonPosition = unref(getSettingButtonPosition);
+
+        if (settingButtonPosition === SettingButtonPositionEnum.AUTO) {
+          return unref(getShowHeader);
+        }
+        return settingButtonPosition === SettingButtonPositionEnum.HEADER;
+      });
+
+      const getLogoWidth = computed(() => {
+        if (!unref(getIsMixMode) || unref(getIsMobile)) {
+          return {};
+        }
+        const width = unref(getMenuWidth) < 180 ? 180 : unref(getMenuWidth);
+        return { width: `${width}px` };
+      });
+
+      const getSplitType = computed(() => {
+        return unref(getSplit) ? MenuSplitTyeEnum.TOP : MenuSplitTyeEnum.NONE;
+      });
+
+      const getMenuMode = computed(() => {
+        return unref(getSplit) ? MenuModeEnum.HORIZONTAL : null;
+      });
+
+      function handleLoginOut() {
+        userStore.confirmLoginOut();
+      }
+
+      function goToMainApp() {
+        userStore.goToMainApp();
+      }
+
+      return {
+        goToMainApp,
+        primaryColor,
+        handleLoginOut,
+        prefixCls,
+        getHeaderClass,
+        getShowHeaderLogo,
+        getHeaderTheme,
+        getShowHeaderTrigger,
+        getIsMobile,
+        getShowBread,
+        getShowContent,
+        getSplitType,
+        getSplit,
+        getMenuMode,
+        getShowTopMenu,
+        getShowLocalePicker,
+        getShowFullScreen,
+        getShowNotice,
+        getUseErrorHandle,
+        getLogoWidth,
+        getIsMixSidebar,
+        getShowSettingButton,
+        getShowSetting,
+        getShowSearch,
+      };
+    },
+  });
+</script>
+<style lang="less">
+  @import 'index.less';
+</style>

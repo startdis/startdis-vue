@@ -1,0 +1,83 @@
+<script lang="ts">
+  import { defineComponent, computed, unref } from 'vue';
+  import { BackTop } from 'ant-design-vue';
+
+  import { useRootSetting } from '/src/hooks/setting/useRootSetting';
+  import { useHeaderSetting } from '/src/hooks/setting/useHeaderSetting';
+  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useUserStoreWithOut } from '/src/store/modules/user';
+
+  import { SettingButtonPositionEnum } from '/src/enums/appEnum';
+  import { createAsyncComponent } from '/src/utils/factory/createAsyncComponent';
+
+  import SessionTimeoutLogin from '/src/views/sys/login/SessionTimeoutLogin.vue';
+  export default defineComponent({
+    name: 'LayoutFeatures',
+    components: {
+      BackTop,
+      LayoutLockPage: createAsyncComponent(() => import('/src/views/sys/lock/index.vue')),
+      SettingDrawer: createAsyncComponent(() => import('/src/layouts/default/setting/index.vue')),
+      SessionTimeoutLogin,
+    },
+    setup() {
+      const { getUseOpenBackTop, getShowSettingButton, getSettingButtonPosition, getFullContent } =
+        useRootSetting();
+      const userStore = useUserStoreWithOut();
+      const { prefixCls } = useDesign('setting-drawer-feature');
+      const { getShowHeader } = useHeaderSetting();
+
+      const getIsSessionTimeout = computed(() => userStore.getSessionTimeout);
+
+      const getIsFixedSettingDrawer = computed(() => {
+        if (!unref(getShowSettingButton)) {
+          return false;
+        }
+        const settingButtonPosition = unref(getSettingButtonPosition);
+
+        if (settingButtonPosition === SettingButtonPositionEnum.AUTO) {
+          return !unref(getShowHeader) || unref(getFullContent);
+        }
+        return settingButtonPosition === SettingButtonPositionEnum.FIXED;
+      });
+
+      return {
+        getTarget: () => document.body,
+        getUseOpenBackTop,
+        getIsFixedSettingDrawer,
+        prefixCls,
+        getIsSessionTimeout,
+      };
+    },
+  });
+</script>
+
+<template>
+  <LayoutLockPage />
+  <BackTop v-if="getUseOpenBackTop" :target="getTarget" />
+  <SettingDrawer v-if="getIsFixedSettingDrawer" :class="prefixCls" />
+  <SessionTimeoutLogin v-if="getIsSessionTimeout" />
+</template>
+
+<style lang="less">
+  @prefix-cls: ~'@{namespace}-setting-drawer-feature';
+
+  .@{prefix-cls} {
+    position: absolute;
+    top: 45%;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    padding: 10px;
+    color: @white;
+    cursor: pointer;
+    background-color: @primary-color;
+    border-radius: 6px 0 0 6px;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+</style>
