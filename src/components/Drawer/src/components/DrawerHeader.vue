@@ -19,12 +19,12 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTitle } from '/src/components/Basic';
+  import { BasicTitle } from '/@/components/Basic';
   import { ArrowLeftOutlined } from '@ant-design/icons-vue';
 
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useDesign } from '/@/hooks/web/useDesign';
 
-  import { propTypes } from '/src/utils/propTypes';
+  import { propTypes } from '/@/utils/propTypes';
   export default defineComponent({
     name: 'BasicDrawerHeader',
     components: { BasicTitle, ArrowLeftOutlined },

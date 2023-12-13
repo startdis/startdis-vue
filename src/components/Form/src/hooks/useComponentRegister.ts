@@ -1,4 +1,4 @@
-import type { ComponentType } from '../types';
+import type { ComponentType } from '../types/index';
 import { tryOnUnmounted } from '@vueuse/core';
 import { add, del } from '../componentMap';
 import type { Component } from 'vue';

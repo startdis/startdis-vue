@@ -4,15 +4,28 @@
   background-color: @component-background;
 
   .ant-tree-node-content-wrapper {
-    position: relative;
+    // position: relative;
+    line-height: 16px;
+    display: flex;
+    padding: 3px 0px;
 
     .ant-tree-title {
-      position: absolute;
+      // position: absolute;
       left: 0;
       width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+
+      white-space: wrap;
+      white-space: normal !important;
+  
+        .vben-tree__title {
+          word-wrap: break-word;
+          word-break: break-all;
+        }
     }
   }
 

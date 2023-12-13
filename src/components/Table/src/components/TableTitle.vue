@@ -5,9 +5,9 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, PropType } from 'vue';
-  import { BasicTitle } from '/src/components/Basic';
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { isFunction } from '/src/utils/is';
+  import { BasicTitle } from '/@/components/Basic/index';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { isFunction } from '/@/utils/is';
 
   export default defineComponent({
     name: 'BasicTableTitle',

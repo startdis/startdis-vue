@@ -34,15 +34,15 @@
   import { defineComponent, PropType, computed, toRaw, unref } from 'vue';
   import { MoreOutlined } from '@ant-design/icons-vue';
   import { Divider, Tooltip, TooltipProps } from 'ant-design-vue';
-  import Icon from '/src/components/Icon';
-  import { ActionItem, TableActionType } from '/src/components/Table';
-  import { PopConfirmButton } from '/src/components/Button';
-  import { Dropdown } from '/src/components/Dropdown';
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import Icon from '/@/components/Icon/index';
+  import { ActionItem, TableActionType } from '/@/components/Table';
+  import { PopConfirmButton } from '/@/components/Button';
+  import { Dropdown } from '/@/components/Dropdown';
+  import { useDesign } from '/@/hooks/web/useDesign';
   import { useTableContext } from '../hooks/useTableContext';
-  import { usePermission } from '/src/hooks/web/usePermission';
-  import { isBoolean, isFunction, isString } from '/src/utils/is';
-  import { propTypes } from '/src/utils/propTypes';
+  import { usePermission } from '/@/hooks/web/usePermission';
+  import { isBoolean, isFunction, isString } from '/@/utils/is';
+  import { propTypes } from '/@/utils/propTypes';
   import { ACTION_COLUMN_FLAG } from '../const';
 
   export default defineComponent({

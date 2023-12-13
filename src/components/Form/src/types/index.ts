@@ -115,4 +115,6 @@ export type ComponentType =
   | 'Slider'
   | 'Rate'
   | 'Divider'
+  | 'MarkDown'
+  | 'Tinymce'
   | 'ApiTransfer';

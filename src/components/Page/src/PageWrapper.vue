@@ -38,12 +38,12 @@
   import { defineComponent, computed, watch, ref, unref } from 'vue';
   import PageFooter from './PageFooter.vue';
 
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { propTypes } from '/src/utils/propTypes';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { propTypes } from '/@/utils/propTypes';
   import { omit } from 'lodash-es';
   import { PageHeader } from 'ant-design-vue';
-  import { useContentHeight } from '/src/hooks/web/useContentHeight';
-  import { PageWrapperFixedHeightKey } from '../index';
+  import { useContentHeight } from '/@/hooks/web/useContentHeight';
+  import { PageWrapperFixedHeightKey } from '..';
 
   export default defineComponent({
     name: 'PageWrapper',

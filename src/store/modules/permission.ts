@@ -1,29 +1,29 @@
-import type { AppRouteRecordRaw, Menu } from '/src/router/types';
+import type { AppRouteRecordRaw, Menu } from '/@/router/types';
 
 import { defineStore } from 'pinia';
-import { store } from '/src/store';
-import { useI18n } from '/src/hooks/web/useI18n';
+import { store } from '/@/store';
+import { useI18n } from '/@/hooks/web/useI18n';
 import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';
 import { toRaw } from 'vue';
-import { transformObjToRoute, flatMultiLevelRoutes } from '/src/router/helper/routeHelper';
-import { transformRouteToMenu } from '/src/router/helper/menuHelper';
+import { transformObjToRoute, flatMultiLevelRoutes } from '/@/router/helper/routeHelper';
+import { transformRouteToMenu } from '/@/router/helper/menuHelper';
 
-import projectSetting from '/src/settings/projectSetting';
-import { listToTree } from '/src/utils/helper/treeHelper';
+import projectSetting from '/@/settings/projectSetting';
+import { listToTree } from '/@/utils/helper/treeHelper';
 
-import { PermissionModeEnum } from '/src/enums/appEnum';
+import { PermissionModeEnum } from '/@/enums/appEnum';
 // import { getOpenConfigList } from "/@/api/systemPrivilege/privilege"
-import { asyncRoutes } from '/src/router/routes';
-import { ERROR_LOG_ROUTE, HOME_ROUTE, PAGE_NOT_FOUND_ROUTE } from '/src/router/routes/basic';
+import { asyncRoutes } from '/@/router/routes';
+import { ERROR_LOG_ROUTE, HOME_ROUTE, PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 
-import { filter } from '/src/utils/helper/treeHelper';
+import { filter } from '/@/utils/helper/treeHelper';
 
-import { getMenuList } from '/src/api/sys/menu';
-import { getPermCode } from '/src/api/sys/user';
+import { getMenuList } from '/@/api/sys/menu';
+import { getPermCode } from '/@/api/sys/user';
 
-import { useMessage } from '/src/hooks/web/useMessage';
-import { PageEnum } from '/src/enums/pageEnum';
+import { useMessage } from '/@/hooks/web/useMessage';
+import { PageEnum } from '/@/enums/pageEnum';
 
 interface PermissionState {
   // Permission code list

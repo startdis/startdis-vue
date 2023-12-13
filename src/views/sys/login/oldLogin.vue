@@ -47,18 +47,18 @@
 </template>
 <script lang="ts" setup>
   import { computed, onMounted } from 'vue';
-  import { AppLogo } from '/src/components/Application';
-  import { AppLocalePicker, AppDarkModeToggle } from '/src/components/Application';
+  import { AppLogo } from '/@/components/Application';
+  import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
   import LoginForm from './LoginForm.vue';
   import ForgetPasswordForm from './ForgetPasswordForm.vue';
   import RegisterForm from './RegisterForm.vue';
   import MobileForm from './MobileForm.vue';
   import QrCodeForm from './QrCodeForm.vue';
-  import { useGlobSetting } from '/src/hooks/setting';
-  import { useI18n } from '/src/hooks/web/useI18n';
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { useLocaleStore } from '/src/store/modules/locale';
-  import { useAppStore } from '/src/store/modules/app';
+  import { useGlobSetting } from '/@/hooks/setting';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useLocaleStore } from '/@/store/modules/locale';
+  import { useAppStore } from '/@/store/modules/app';
 
   defineProps({
     sessionTimeout: {

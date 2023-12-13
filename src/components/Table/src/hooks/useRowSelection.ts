@@ -1,9 +1,9 @@
-import { isFunction } from '/src/utils/is';
+import { isFunction } from '/@/utils/is';
 import type { BasicTableProps, TableRowSelection } from '../types/table';
 import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
 import { ROW_KEY } from '../const';
 import { omit } from 'lodash-es';
-import { findNodeAll } from '/src/utils/helper/treeHelper';
+import { findNodeAll } from '/@/utils/helper/treeHelper';
 
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
@@ -31,25 +31,16 @@ export function useRowSelection(
         const selectedRowKeys = getSelectRowKeys() || []
         console.log(list,selectedRowKeys);
         if(!selected){
-          // 这里是取消勾选，删除对应的数组项
-          if (rowSelection.type == 'radio') {
-            setSelectedRowKeys([])
-          } else {
-            selectedRowKeys.map((x,item) => {
-              if(x === record[unref(getRowKey) as string]){
-                selectedRowKeys.splice(item,1)
-              }
-            })
-          }
+        // 这里是取消勾选，删除对应的数组项
+          selectedRowKeys.map((x,item) => {
+            if(x === record[unref(getRowKey) as string]){
+              selectedRowKeys.splice(item,1)
+            }
+          })
         }
         if(selected) {
           // 这里是点击勾选，添加id字段到selectedRowKeys数组里
-          if (rowSelection.type == 'radio') {
-            setSelectedRowKeys([record[unref(getRowKey) as string]]);
-            return
-          } else {
-            selectedRowKeys.push(record[unref(getRowKey) as string])
-          }
+          selectedRowKeys.push(record[unref(getRowKey) as string])
         }
         setSelectedRowKeys(selectedRowKeys);
       },

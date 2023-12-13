@@ -78,9 +78,9 @@ import { Button, Tag, Upload, Modal } from 'ant-design-vue';
 import Draggable from 'vuedraggable-es';
 // import { getToken } from '@/utils/auth';
 import { PlusOutlined,EyeOutlined,DeleteOutlined } from '@ant-design/icons-vue';
-import { Upload as uploadApi } from '/src/api/sys/file';
-import { ResultEnum } from '/src/enums/httpEnum';
-import { useMessage } from '/src/hooks/web/useMessage';
+import { Upload as uploadApi } from '/@/api/sys/file';
+import { ResultEnum } from '/@/enums/httpEnum';
+import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 import axios from 'axios';
 const props = defineProps({

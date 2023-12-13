@@ -1,6 +1,6 @@
-import { defHttp } from '/src/utils/http/axios';
+import { defHttp } from '/@/utils/http/axios';
 import { getMenuListByIdParams, getMenuListByIdParamsResultModel, ModuleInfo } from './model/menuModel';
-// import { data} from './menu.json'
+import { data} from './menu.json'
 enum Api {
   // 测试先屏蔽
   // GetLoginModules = './menu.json'
@@ -12,7 +12,7 @@ enum Api {
  */
 
 export const getMenuList = () => {
-  // return data
+  return data
   const result = defHttp.post<ModuleInfo>({ url: Api.GetLoginModules});
   return Promise.resolve(result).then(res => {
     let list = []

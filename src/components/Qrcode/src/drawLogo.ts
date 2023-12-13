@@ -1,4 +1,4 @@
-import { isString } from '/src/utils/is';
+import { isString } from '/@/utils/is';
 import { RenderQrCodeParams, LogoType } from './typing';
 export const drawLogo = ({ canvas, logo }: RenderQrCodeParams) => {
   if (!logo) {

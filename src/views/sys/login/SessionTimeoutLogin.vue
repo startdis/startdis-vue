@@ -8,11 +8,11 @@
 <script lang="ts" setup>
   import { onBeforeUnmount, onMounted, ref } from 'vue';
   import Login from './Login.vue';
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { useUserStore } from '/src/store/modules/user';
-  import { usePermissionStore } from '/src/store/modules/permission';
-  import { useAppStore } from '/src/store/modules/app';
-  import { PermissionModeEnum } from '/src/enums/appEnum';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useUserStore } from '/@/store/modules/user';
+  import { usePermissionStore } from '/@/store/modules/permission';
+  import { useAppStore } from '/@/store/modules/app';
+  import { PermissionModeEnum } from '/@/enums/appEnum';
 
   const { prefixCls } = useDesign('st-login');
   const userStore = useUserStore();

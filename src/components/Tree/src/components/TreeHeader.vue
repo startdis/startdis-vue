@@ -35,11 +35,11 @@
 <script lang="ts" setup>
   import { computed, ref, watch, useSlots } from 'vue';
   import { Dropdown, Menu, MenuItem, MenuDivider, InputSearch } from 'ant-design-vue';
-  import { Icon } from '/src/components/Icon';
-  import { BasicTitle } from '/src/components/Basic';
-  import { useI18n } from '/src/hooks/web/useI18n';
+  import { Icon } from '/@/components/Icon';
+  import { BasicTitle } from '/@/components/Basic';
+  import { useI18n } from '/@/hooks/web/useI18n';
   import { useDebounceFn } from '@vueuse/core';
-  import { createBEM } from '/src/utils/bem';
+  import { createBEM } from '/@/utils/bem';
   import { ToolbarEnum } from '../types/tree';
 
   const searchValue = ref('');

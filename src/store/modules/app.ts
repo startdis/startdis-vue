@@ -4,18 +4,18 @@ import type {
   MenuSetting,
   TransitionSetting,
   MultiTabsSetting,
-} from '/types/config';
-import type { BeforeMiniState } from '/types/store';
+} from '/#/config';
+import type { BeforeMiniState } from '/#/store';
 
 import { defineStore } from 'pinia';
-import { store } from '/src/store';
+import { store } from '/@/store';
 
-import { ThemeEnum } from '/src/enums/appEnum';
-import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '/src/enums/cacheEnum';
-import { Persistent } from '/src/utils/cache/persistent';
-import { darkMode } from '/src/settings/designSetting';
-import { resetRouter } from '/src/router';
-import { deepMerge } from '/src/utils';
+import { ThemeEnum } from '/@/enums/appEnum';
+import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '/@/enums/cacheEnum';
+import { Persistent } from '/@/utils/cache/persistent';
+import { darkMode } from '/@/settings/designSetting';
+import { resetRouter } from '/@/router';
+import { deepMerge } from '/@/utils';
 
 interface AppState {
   darkMode?: ThemeEnum;

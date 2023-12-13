@@ -1,10 +1,10 @@
 <script lang="tsx">
   import type { Ref } from 'vue';
   import { defineComponent, ref, computed, unref, reactive, watch, watchEffect } from 'vue';
-  import { useTimeoutFn } from '/src/hooks/core/useTimeout';
-  import { useEventListener } from '/src/hooks/event/useEventListener';
+  import { useTimeoutFn } from '/@/hooks/core/useTimeout';
+  import { useEventListener } from '/@/hooks/event/useEventListener';
   import { basicProps } from './props';
-  import { getSlot } from '/src/utils/helper/tsxHelper';
+  import { getSlot } from '/@/utils/helper/tsxHelper';
   import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({

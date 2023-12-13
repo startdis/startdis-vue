@@ -14,14 +14,14 @@
   import { defineComponent, watch, ref } from 'vue';
   //   import { BasicTable, useTable } from '/@/components/Table';
   import FileList from './FileList.vue';
-  import { BasicModal, useModalInner } from '/src/components/Modal';
+  import { BasicModal, useModalInner } from '/@/components/Modal';
   import { previewProps } from './props';
   import { PreviewFileItem } from './typing';
-  import { downLoadApi } from '/src/api/sys/upload';
-  import { downloadByData } from '/src/utils/file/download';
+  import { downLoadApi } from '/@/api/sys/upload';
+  import { downloadByData } from '/@/utils/file/download';
   import { createPreviewColumns, createPreviewActionColumn } from './data';
-  import { useI18n } from '/src/hooks/web/useI18n';
-  import { isArray } from '/src/utils/is';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { isArray } from '/@/utils/is';
 
   export default defineComponent({
     components: { BasicModal, FileList },

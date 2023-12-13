@@ -1,11 +1,11 @@
 import type { BasicTableProps, TableRowSelection, BasicColumn } from '../types/table';
 import { Ref, ComputedRef, ref } from 'vue';
 import { computed, unref, nextTick, watch } from 'vue';
-import { getViewportOffset } from '/src/utils/domUtils';
-import { isBoolean } from '/src/utils/is';
-import { useWindowSizeFn } from '/src/hooks/event/useWindowSizeFn';
-import { useModalContext } from '/src/components/Modal';
-import { onMountedOrActivated } from '/src/hooks/core/onMountedOrActivated';
+import { getViewportOffset } from '/@/utils/domUtils';
+import { isBoolean } from '/@/utils/is';
+import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
+import { useModalContext } from '/@/components/Modal';
+import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
 import { useDebounceFn } from '@vueuse/core';
 
 export function useTableScroll(

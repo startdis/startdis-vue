@@ -16,10 +16,10 @@
   </SubMenu>
 </template>
 <script lang="ts">
-  import type { Menu as MenuType } from '/src/router/types';
+  import type { Menu as MenuType } from '/@/router/types';
   import { defineComponent, computed } from 'vue';
   import { Menu } from 'ant-design-vue';
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useDesign } from '/@/hooks/web/useDesign';
   import { itemProps } from '../props';
   import BasicMenuItem from './BasicMenuItem.vue';
   import MenuItemContent from './MenuItemContent.vue';

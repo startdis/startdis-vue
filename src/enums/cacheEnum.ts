@@ -10,8 +10,6 @@ export const LOCALE_KEY = 'LOCALE__';
 
 // user info key
 export const USER_INFO_KEY = 'USER__INFO__';
-export const HOME_PATH_KEY = 'HOME_PATH';
-
 
 // role info key
 export const ROLES_KEY = 'ROLES__KEY__';

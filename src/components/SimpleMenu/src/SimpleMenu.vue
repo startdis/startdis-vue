@@ -19,19 +19,19 @@
 </template>
 <script lang="ts">
   import type { MenuState } from './types';
-  import type { Menu as MenuType } from '/src/router/types';
+  import type { Menu as MenuType } from '/@/router/types';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
   import { defineComponent, computed, ref, unref, reactive, toRefs, watch } from 'vue';
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useDesign } from '/@/hooks/web/useDesign';
   import Menu from './components/Menu.vue';
   import SimpleSubMenu from './SimpleSubMenu.vue';
-  import { listenerRouteChange } from '/src/logics/mitt/routeChange';
-  import { propTypes } from '/src/utils/propTypes';
-  import { REDIRECT_NAME } from '/src/router/constant';
+  import { listenerRouteChange } from '/@/logics/mitt/routeChange';
+  import { propTypes } from '/@/utils/propTypes';
+  import { REDIRECT_NAME } from '/@/router/constant';
   import { useRouter } from 'vue-router';
-  import { isFunction, isUrl } from '/src/utils/is';
-  import { openWindow } from '/src/utils';
-  import { getCurrentParentPath } from '/src/router/menus';
+  import { isFunction, isUrl } from '/@/utils/is';
+  import { openWindow } from '/@/utils';
+  import { getCurrentParentPath } from '/@/router/menus';
   import { useOpenKeys } from './useOpenKeys';
   export default defineComponent({
     name: 'SimpleMenu',
@@ -159,5 +159,5 @@
   });
 </script>
 <style lang="less">
-  @import 'index.less';
+  @import './index.less';
 </style>

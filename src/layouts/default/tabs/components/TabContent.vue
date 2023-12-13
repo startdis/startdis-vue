@@ -19,13 +19,13 @@
   import type { RouteLocationNormalized } from 'vue-router';
 
   import { defineComponent, computed, unref } from 'vue';
-  import { Dropdown } from '/src/components/Dropdown';
-  import { Icon } from '/src/components/Icon';
+  import { Dropdown } from '/@/components/Dropdown/index';
+  import { Icon } from '/@/components/Icon';
 
   import { TabContentProps } from '../types';
 
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { useI18n } from '/src/hooks/web/useI18n';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useI18n } from '/@/hooks/web/useI18n';
   import { useTabDropdown } from '../useTabDropdown';
 
   export default defineComponent({

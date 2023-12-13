@@ -14,10 +14,10 @@
 <script lang="ts">
   import { computed, defineComponent, watch, ref, unref, watchEffect } from 'vue';
   import { Transfer } from 'ant-design-vue';
-  import { isFunction } from '/src/utils/is';
+  import { isFunction } from '/@/utils/is';
   import { get, omit } from 'lodash-es';
-  import { propTypes } from '/src/utils/propTypes';
-  import { useI18n } from '/src/hooks/web/useI18n';
+  import { propTypes } from '/@/utils/propTypes';
+  import { useI18n } from '/@/hooks/web/useI18n';
   import { TransferDirection, TransferItem } from 'ant-design-vue/lib/transfer';
   export default defineComponent({
     name: 'ApiTransfer',
@@ -83,8 +83,7 @@
 
       function handleChange(keys: string[], direction: TransferDirection, moveKeys: string[]) {
         _targetKeys.value = keys;
-        console.log(direction);
-        console.log(moveKeys);
+     
         emit('change', keys);
       }
 

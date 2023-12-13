@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon",
-    "build": "rimraf ./dist && tsup index.ts --dts --format cjs,esm  ",
+    "build": "rimraf ./dist && tsup ./index.ts --dts --format cjs,esm  ",
     "prod": "npx pm2 start ecosystem.config.js --env production",
     "restart": "pm2 restart ecosystem.config.js --env production",
     "stop": "npx pm2 stop ecosystem.config.js"

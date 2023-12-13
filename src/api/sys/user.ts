@@ -1,7 +1,7 @@
-import { defHttp } from '/src/utils/http/axios';
+import { defHttp } from '/@/utils/http/axios';
 import { LoginParams, LoginResultModel, GetUserInfoModel, AuthLoginParams, AuthLoginResultModel } from './model/userModel';
 
-import { ErrorMessageMode } from '/types/axios';
+import { ErrorMessageMode } from '/#/axios';
 
 enum Api {
   Token = '/common/token',
@@ -69,7 +69,7 @@ export function getUserInfoById(params: any) {
  */
 export function getUserInfo() {
   // 测试先屏蔽
-  // return Promise.resolve({})
+  return Promise.resolve({})
   return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo }, { errorMessageMode: 'modal' });
 }
 

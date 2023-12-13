@@ -4,11 +4,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { getAppEnvConfig } from '/src/utils/env';
+import { getAppEnvConfig } from '/@/utils/env';
 import { useRoute } from 'vue-router'
 import { onMounted, nextTick } from 'vue'
-import { useUserStoreWithOut } from '/src/store/modules/user';
-import { useAppStoreWithOut } from '/src/store/modules/app';
+import { useUserStoreWithOut } from '/@/store/modules/user';
+import { useAppStoreWithOut } from '/@/store/modules/app';
 const userStore = useUserStoreWithOut();
 const {
   VITE_GLOB_SSO_URL,

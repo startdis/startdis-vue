@@ -30,14 +30,14 @@
 
   import { Layout } from 'ant-design-vue';
   import LayoutMenu from '../menu/index.vue';
-  import LayoutTrigger from '/src/layouts/default/trigger/index.vue';
+  import LayoutTrigger from '/@/layouts/default/trigger/index.vue';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '/src/enums/menuEnum';
+  import { MenuModeEnum, MenuSplitTyeEnum } from '/@/enums/menuEnum';
 
-  import { useMenuSetting } from '/src/hooks/setting/useMenuSetting';
+  import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
   import { useTrigger, useDragLine, useSiderEvent } from './useLayoutSider';
-  import { useAppInject } from '/src/hooks/web/useAppInject';
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useAppInject } from '/@/hooks/web/useAppInject';
+  import { useDesign } from '/@/hooks/web/useDesign';
 
   import DragBar from './DragBar.vue';
   export default defineComponent({

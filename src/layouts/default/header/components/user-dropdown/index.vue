@@ -41,19 +41,19 @@
 
   import { defineComponent, computed } from 'vue';
 
-  import { DOC_URL } from '/src/settings/siteSetting';
+  import { DOC_URL } from '/@/settings/siteSetting';
 
-  import { useUserStore } from '/src/store/modules/user';
-  import { useHeaderSetting } from '/src/hooks/setting/useHeaderSetting';
-  import { useI18n } from '/src/hooks/web/useI18n';
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { useModal } from '/src/components/Modal';
+  import { useUserStore } from '/@/store/modules/user';
+  import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useModal } from '/@/components/Modal';
 
-  import headerImg from '/src/assets/images/header.jpg';
-  import { propTypes } from '/src/utils/propTypes';
-  import { openWindow } from '/src/utils';
+  import headerImg from '/@/assets/images/header.jpg';
+  import { propTypes } from '/@/utils/propTypes';
+  import { openWindow } from '/@/utils';
 
-  import { createAsyncComponent } from '/src/utils/factory/createAsyncComponent';
+  import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
   type MenuEvent = 'logout' | 'doc' | 'lock';
 

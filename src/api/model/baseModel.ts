@@ -11,7 +11,7 @@ export interface CheckExistParams {
 }
 
 export interface BasicFetchResult<T extends any> {
-  rows: T;
+  record: T;
   total: number;
 }
 

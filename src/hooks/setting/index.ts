@@ -1,7 +1,7 @@
-import type { GlobConfig } from '/types/config';
+import type { GlobConfig } from '/#/config';
 
-import { warn } from '/src/utils/log';
-import { getAppEnvConfig } from '/src/utils/env';
+import { warn } from '/@/utils/log';
+import { getAppEnvConfig } from '/@/utils/env';
 
 export const useGlobSetting = (): Readonly<GlobConfig> => {
   const {

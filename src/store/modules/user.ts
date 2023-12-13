@@ -1,29 +1,28 @@
-import type { UserInfo } from '/types/store';
-import type { ErrorMessageMode } from '/types/axios';
+import type { UserInfo } from '/#/store';
+import type { ErrorMessageMode } from '/#/axios';
 import { defineStore } from 'pinia';
-import { store } from '/src/store';
-import { RoleEnum } from '/src/enums/roleEnum';
-import { PageEnum } from '/src/enums/pageEnum';
-import { ROLES_KEY, COMPANY_KEY, GROUP_KEY,HOME_PATH_KEY, TOKEN_KEY, USER_INFO_KEY } from '/src/enums/cacheEnum';
-import { getAuthCache, setAuthCache } from '/src/utils/auth';
-import { GetUserInfoModel, LoginParams, AuthLoginParams } from '/src/api/sys/model/userModel';
-import { doLogout, getUserInfo, loginApi,loginByCodeApi } from '/src/api/sys/user';
-import { useI18n } from '/src/hooks/web/useI18n';
-import { useMessage } from '/src/hooks/web/useMessage';
-import { router } from '/src/router';
-import { usePermissionStore } from '/src/store/modules/permission';
+import { store } from '/@/store';
+import { RoleEnum } from '/@/enums/roleEnum';
+import { PageEnum } from '/@/enums/pageEnum';
+import { ROLES_KEY, COMPANY_KEY, GROUP_KEY, TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum';
+import { getAuthCache, setAuthCache } from '/@/utils/auth';
+import { GetUserInfoModel, LoginParams, AuthLoginParams,AuthLoginResultModel } from '/@/api/sys/model/userModel';
+import { doLogout, getUserInfo, loginApi,loginByCodeApi } from '/@/api/sys/user';
+import { getAppEnvConfig } from '/@/utils/env';
+import { useI18n } from '/@/hooks/web/useI18n';
+import { useMessage } from '/@/hooks/web/useMessage';
+import { router } from '/@/router';
+import { usePermissionStore } from '/@/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
-import { PAGE_NOT_FOUND_ROUTE } from '/src/router/routes/basic';
-import { isArray } from '/src/utils/is';
+import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
+import { isArray } from '/@/utils/is';
 import { h } from 'vue';
-import { getAppEnvConfig } from '/src/utils/env';
 const {
   VITE_GLOB_SSO_URL,
 } = getAppEnvConfig();
 interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
-  homePath?: string;
   companyTenantId?: string;
   groupTenantId?: string;
   roleList: RoleEnum[];
@@ -36,7 +35,6 @@ export const useUserStore = defineStore({
   state: (): UserState => ({
     // user info
     userInfo: null,
-    homePath:null,
     // token
     token: undefined,
     companyTenantId: undefined,
@@ -52,11 +50,8 @@ export const useUserStore = defineStore({
     getUserInfo(): UserInfo {
       return this.userInfo || getAuthCache<UserInfo>(USER_INFO_KEY) || {};
     },
-    getHomePath(): string {
-      return this.homePath || getAuthCache<string>(HOME_PATH_KEY) || {};
-    },
     getToken(): string {
-      return this.token || getAuthCache<string>(TOKEN_KEY);
+      return 'xxxx' || getAuthCache<string>(TOKEN_KEY);
     },
     getRoleList(): RoleEnum[] {
       return this.roleList.length > 0 ? this.roleList : getAuthCache<RoleEnum[]>(ROLES_KEY);
@@ -89,10 +84,6 @@ export const useUserStore = defineStore({
       this.userInfo = info;
       this.lastUpdateTime = new Date().getTime();
       setAuthCache(USER_INFO_KEY, info);
-    },
-    setHomePath(url: string | null) {
-      this.homePath = url
-      setAuthCache(HOME_PATH_KEY, url);
     },
     setSessionTimeout(flag: boolean) {
       this.sessionTimeout = flag;
@@ -156,11 +147,9 @@ export const useUserStore = defineStore({
             router.addRoute(route as unknown as RouteRecordRaw);
           });
           router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
-          console.log('routerrouterrouter',router);
           permissionStore.setDynamicAddedRoute(true);
         }
-        
-        goHome && (await router.replace(this.getHomePath|| PageEnum.BASE_HOME));
+        goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));
       }
       return userInfo;
     },
@@ -175,7 +164,7 @@ export const useUserStore = defineStore({
         this.setGroupTenantId(userInfo.groupTenantId);
       }
       this.setUserInfo(userInfo);
-      return userInfo
+      return userInfo;
     },
     /**
      * @description: logout
@@ -230,7 +219,7 @@ export const useUserStore = defineStore({
           // await this.logout(true);
         },
       });
-    },  
+    },
   },
 });
 

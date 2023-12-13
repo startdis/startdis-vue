@@ -1,6 +1,6 @@
-import { ErrorTypeEnum } from '/src/enums/exceptionEnum';
-import { MenuModeEnum, MenuTypeEnum } from '/src/enums/menuEnum';
-import { RoleInfo } from '/src/api/sys/model/userModel';
+import { ErrorTypeEnum } from '/@/enums/exceptionEnum';
+import { MenuModeEnum, MenuTypeEnum } from '/@/enums/menuEnum';
+import { RoleInfo } from '/@/api/sys/model/userModel';
 
 // Lock screen information
 export interface LockInfo {
@@ -44,7 +44,6 @@ export interface UserInfo {
   groupTenantId: string;
   headPic: string;
   id: string;
-  userId: string;
   loginDate: string;
   loginIp: string;
   mobile: string;

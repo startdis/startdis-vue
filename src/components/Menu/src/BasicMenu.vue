@@ -22,17 +22,17 @@
   import { computed, defineComponent, unref, reactive, watch, toRefs, ref } from 'vue';
   import { Menu } from 'ant-design-vue';
   import BasicSubMenuItem from './components/BasicSubMenuItem.vue';
-  import { MenuModeEnum, MenuTypeEnum } from '/src/enums/menuEnum';
+  import { MenuModeEnum, MenuTypeEnum } from '/@/enums/menuEnum';
   import { useOpenKeys } from './useOpenKeys';
   import { RouteLocationNormalizedLoaded, useRouter } from 'vue-router';
-  import { isFunction } from '/src/utils/is';
+  import { isFunction } from '/@/utils/is';
   import { basicProps } from './props';
-  import { useMenuSetting } from '/src/hooks/setting/useMenuSetting';
-  import { REDIRECT_NAME } from '/src/router/constant';
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { getCurrentParentPath } from '/src/router/menus';
-  import { listenerRouteChange } from '/src/logics/mitt/routeChange';
-  import { getAllParentPath } from '/src/router/helper/menuHelper';
+  import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
+  import { REDIRECT_NAME } from '/@/router/constant';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { getCurrentParentPath } from '/@/router/menus';
+  import { listenerRouteChange } from '/@/logics/mitt/routeChange';
+  import { getAllParentPath } from '/@/router/helper/menuHelper';
 
   export default defineComponent({
     name: 'BasicMenu',
@@ -160,5 +160,5 @@
   });
 </script>
 <style lang="less">
-  @import 'index.less';
+  @import './index.less';
 </style>

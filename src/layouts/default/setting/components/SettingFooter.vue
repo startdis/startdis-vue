@@ -21,19 +21,19 @@
 
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
 
-  import { useAppStore } from '/src/store/modules/app';
-  import { usePermissionStore } from '/src/store/modules/permission';
-  import { useMultipleTabStore } from '/src/store/modules/multipleTab';
-  import { useUserStore } from '/src/store/modules/user';
+  import { useAppStore } from '/@/store/modules/app';
+  import { usePermissionStore } from '/@/store/modules/permission';
+  import { useMultipleTabStore } from '/@/store/modules/multipleTab';
+  import { useUserStore } from '/@/store/modules/user';
 
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { useI18n } from '/src/hooks/web/useI18n';
-  import { useMessage } from '/src/hooks/web/useMessage';
-  import { useCopyToClipboard } from '/src/hooks/web/useCopyToClipboard';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useCopyToClipboard } from '/@/hooks/web/useCopyToClipboard';
 
-  import { updateColorWeak } from '/src/logics/theme/updateColorWeak';
-  import { updateGrayMode } from '/src/logics/theme/updateGrayMode';
-  import defaultSetting from '/src/settings/projectSetting';
+  import { updateColorWeak } from '/@/logics/theme/updateColorWeak';
+  import { updateGrayMode } from '/@/logics/theme/updateGrayMode';
+  import defaultSetting from '/@/settings/projectSetting';
 
   export default defineComponent({
     name: 'SettingFooter',

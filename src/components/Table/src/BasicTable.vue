@@ -49,8 +49,8 @@
 
   import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
   import { Table } from 'ant-design-vue';
-  import { BasicForm, useForm } from '/src/components/Form';
-  import { PageWrapperFixedHeightKey } from '/src/components/Page';
+  import { BasicForm, useForm } from '/@/components/Form/index';
+  import { PageWrapperFixedHeightKey } from '/@/components/Page';
   import HeaderCell from './components/HeaderCell.vue';
   import { InnerHandlers } from './types/table';
 
@@ -68,12 +68,12 @@
   import { createTableContext } from './hooks/useTableContext';
   import { useTableFooter } from './hooks/useTableFooter';
   import { useTableForm } from './hooks/useTableForm';
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useDesign } from '/@/hooks/web/useDesign';
 
   import { omit } from 'lodash-es';
   import { basicProps } from './props';
-  import { isFunction } from '/src/utils/is';
-  import { warn } from '/src/utils/log';
+  import { isFunction } from '/@/utils/is';
+  import { warn } from '/@/utils/log';
 
   export default defineComponent({
     name: 'BasicTable',

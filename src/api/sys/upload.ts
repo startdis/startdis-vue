@@ -1,7 +1,7 @@
 import { UploadApiResult } from './model/uploadModel';
-import { defHttp } from '/src/utils/http/axios';
-import { UploadFileParams } from '/types/axios';
-import { useGlobSetting } from '/src/hooks/setting';
+import { defHttp } from '/@/utils/http/axios';
+import { UploadFileParams } from '/#/axios';
+import { useGlobSetting } from '/@/hooks/setting';
 
 const { uploadUrl = '' } = useGlobSetting();
 

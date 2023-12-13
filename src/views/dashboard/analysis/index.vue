@@ -1,5 +1,3 @@
 <template>
-  <div>首页</div>
+  <h1>我是首页</h1>
 </template>
-<script lang="ts" setup>
-</script>

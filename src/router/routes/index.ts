@@ -1,9 +1,9 @@
-import type { AppRouteRecordRaw, AppRouteModule } from '/src/router/types';
+import type { AppRouteRecordRaw, AppRouteModule } from '/@/router/types';
 
-import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/src/router/routes/basic';
+import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/@/router/routes/basic';
 
-import { PageEnum } from '/src/enums/pageEnum';
-import { t } from '/src/hooks/web/useI18n';
+import { PageEnum } from '/@/enums/pageEnum';
+import { t } from '/@/hooks/web/useI18n';
 
 // import.meta.globEager() 直接引入所有的模块 Vite 独有的功能
 const modules = import.meta.globEager('./modules/**/*.ts');
@@ -28,19 +28,10 @@ export const RootRoute: AppRouteRecordRaw = {
   },
 };
 
-export const IconfontRoute: AppRouteRecordRaw = {
-  path: '/iconfont',
-  name: 'Iconfont',
-  component: () => import('/src/views/sys/iconfont/Iconfont.vue'),
-  meta: {
-    title: '应用列表',
-  },
-};
-
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('/src/views/sys/login/Login.vue'),
+  component: () => import('/@/views/sys/login/Login.vue'),
   meta: {
     title: t('routes.basic.login'),
   },
@@ -49,11 +40,17 @@ export const LoginRoute: AppRouteRecordRaw = {
 export const AuthLoginRoute: AppRouteRecordRaw = {
   path: '/authLogin',
   name: 'authLogin',
-  component: () => import('/src/views/sys/login/authLogin.vue'),
+  component: () => import('/@/views/sys/login/authLogin.vue'),
   meta: {
     title: t('routes.basic.login'),
   },
 };
 // Basic routing without permission
 // 未经许可的基本路由
-export const basicRoutes = [LoginRoute, RootRoute,AuthLoginRoute, REDIRECT_ROUTE, PAGE_NOT_FOUND_ROUTE];
+export const basicRoutes = [
+  LoginRoute,
+  RootRoute,
+  AuthLoginRoute,
+  REDIRECT_ROUTE,
+  PAGE_NOT_FOUND_ROUTE,
+];

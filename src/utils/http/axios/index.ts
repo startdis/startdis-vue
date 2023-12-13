@@ -3,23 +3,23 @@
 
 import type { AxiosResponse } from 'axios';
 import { clone } from 'lodash-es';
-import type { RequestOptions, Result } from '/types/axios';
+import type { RequestOptions, Result } from '/#/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
-import { useGlobSetting } from '/src/hooks/setting';
-import { useMessage } from '/src/hooks/web/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum } from '/src/enums/httpEnum';
-import { isString, isUnDef, isNull, isEmpty } from '/src/utils/is';
-import { getToken,getCompanyId,getGrounpId } from '/src/utils/auth';
-import { setObjToUrlParams, deepMerge } from '/src/utils';
-import { useErrorLogStoreWithOut } from '/src/store/modules/errorLog';
-import { useI18n } from '/src/hooks/web/useI18n';
+import { useGlobSetting } from '/@/hooks/setting';
+import { useMessage } from '/@/hooks/web/useMessage';
+import { RequestEnum, ResultEnum, ContentTypeEnum } from '/@/enums/httpEnum';
+import { isString, isUnDef, isNull, isEmpty } from '/@/utils/is';
+import { getToken,getCompanyId,getGrounpId } from '/@/utils/auth';
+import { setObjToUrlParams, deepMerge } from '/@/utils';
+import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog';
+import { useI18n } from '/@/hooks/web/useI18n';
 import { joinTimestamp, formatRequestDate } from './helper';
-import { useUserStoreWithOut } from '/src/store/modules/user';
-import { AxiosRetry } from '/src/utils/http/axios/axiosRetry';
+import { useUserStoreWithOut } from '/@/store/modules/user';
+import { AxiosRetry } from '/@/utils/http/axios/axiosRetry';
 import axios from 'axios';
-import {  COMPANY_KEY, GROUP_KEY, TOKEN_KEY } from '/src/enums/cacheEnum';
+import {  COMPANY_KEY, GROUP_KEY, TOKEN_KEY } from '/@/enums/cacheEnum';
 const globSetting = useGlobSetting();
 const urlPrefix = globSetting.urlPrefix;
 const { createMessage, createErrorModal, createSuccessModal } = useMessage();
@@ -188,14 +188,14 @@ const transform: AxiosTransform = {
     const companyId = getCompanyId();
     const grounpId = getGrounpId();
     (config as Recordable).headers['X-SERVICE-TYPE'] = 'webService';
+    (config as Recordable).headers['X-GROUP-TENANT-ID'] = '1667075454562709506';
+    (config as Recordable).headers['X-COMPANY-TENANT-ID'] = '1667075454562709506';
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
       // // 测试先屏蔽COMPANY_KEY
       // (config as Recordable).headers['X-SERVICE-TYPE'] = 'webService';
-      // (config as Recordable).headers['X-GROUP-TENANT-ID'] = '1667075454562709506';
-      // (config as Recordable).headers['X-COMPANY-TENANT-ID'] = '1667075454562709506';
-      (config as Recordable).headers[GROUP_KEY] = grounpId;
-      (config as Recordable).headers[COMPANY_KEY] = companyId;
+      // (config as Recordable).headers[GROUP_KEY] = grounpId;
+      // (config as Recordable).headers[COMPANY_KEY] = companyId;
       (config as Recordable).headers[TOKEN_KEY] = token;
     }
     return config;

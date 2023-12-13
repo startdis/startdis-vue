@@ -19,10 +19,10 @@
     provide,
   } from 'vue';
 
-  import { useDesign } from '/src/hooks/web/useDesign';
-  import { propTypes } from '/src/utils/propTypes';
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { propTypes } from '/@/utils/propTypes';
   import { createSimpleRootMenuContext } from './useSimpleMenuContext';
-  import mitt from '/src/utils/mitt';
+  import mitt from '/@/utils/mitt';
   export default defineComponent({
     name: 'Menu',
     props: {
@@ -154,5 +154,5 @@
   });
 </script>
 <style lang="less">
-  @import 'menu.less';
+  @import './menu.less';
 </style>

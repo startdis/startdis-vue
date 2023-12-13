@@ -1,4 +1,4 @@
-import type { LocaleType } from '/types/config';
+import type { LocaleType } from '/#/config';
 
 import { set } from 'lodash-es';
 

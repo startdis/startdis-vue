@@ -6,12 +6,9 @@
       </a-button>
       <Tooltip placement="bottom" v-if="showPreview">
         <template #title>
+          {{ t('component.upload.uploaded') }}
           <template v-if="fileList.length">
-            {{ t('component.upload.uploaded') }}
             {{ fileList.length }}
-          </template>
-          <template v-else>
-            {{ t('component.upload.unUploaded') }}
           </template>
         </template>
         <a-button @click="openPreviewModal">
@@ -40,13 +37,13 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch, unref, computed } from 'vue';
-  import { Icon } from '/src/components/Icon';
+  import { Icon } from '/@/components/Icon';
   import { Tooltip, Space } from 'ant-design-vue';
-  import { useModal } from '/src/components/Modal';
+  import { useModal } from '/@/components/Modal';
   import { uploadContainerProps } from './props';
   import { omit } from 'lodash-es';
-  import { useI18n } from '/src/hooks/web/useI18n';
-  import { isArray } from '/src/utils/is';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { isArray } from '/@/utils/is';
   import UploadModal from './UploadModal.vue';
   import UploadPreviewModal from './UploadPreviewModal.vue';
 

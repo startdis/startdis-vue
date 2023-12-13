@@ -1,5 +1,5 @@
 import type { Component } from 'vue';
-import type { ComponentType } from './types';
+import type { ComponentType } from './types/index';
 
 /**
  * Component list, register here to setting it in the form
@@ -28,11 +28,13 @@ import ApiTree from './components/ApiTree.vue';
 import ApiTreeSelect from './components/ApiTreeSelect.vue';
 import ApiCascader from './components/ApiCascader.vue';
 import ApiTransfer from './components/ApiTransfer.vue';
-import { BasicUpload } from '/src/components/Upload';
-import { ImageUpload } from '/src/components/ImageUpload';
-import { StrengthMeter } from '/src/components/StrengthMeter';
-import { IconPicker } from '/src/components/Icon';
-import { CountdownInput } from '/src/components/CountDown';
+import { BasicUpload } from '/@/components/Upload';
+import { ImageUpload } from '/@/components/ImageUpload';
+import { StrengthMeter } from '/@/components/StrengthMeter';
+import { IconPicker } from '/@/components/Icon';
+import { CountdownInput } from '/@/components/CountDown';
+import { MarkDown } from '/@/components/Markdown';
+import { Tinymce } from '/@/components/Tinymce';
 
 const componentMap = new Map<ComponentType, Component>();
 
@@ -71,9 +73,10 @@ componentMap.set('IconPicker', IconPicker);
 componentMap.set('InputCountDown', CountdownInput);
 
 componentMap.set('Upload', BasicUpload);
-componentMap.set('ImageUpload', ImageUpload);
 componentMap.set('Divider', Divider);
-
+componentMap.set('ImageUpload', ImageUpload);
+componentMap.set('MarkDown', MarkDown);
+componentMap.set('Tinymce', Tinymce);
 export function add(compName: ComponentType, component: Component) {
   componentMap.set(compName, component);
 }

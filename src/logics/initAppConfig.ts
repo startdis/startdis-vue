@@ -1,26 +1,26 @@
 /**
  * Application configuration
  */
-import type { ProjectConfig } from '/types/config';
+import type { ProjectConfig } from '/#/config';
 
-import { PROJ_CFG_KEY } from '/src/enums/cacheEnum';
-import projectSetting from '/src/settings/projectSetting';
+import { PROJ_CFG_KEY } from '/@/enums/cacheEnum';
+import projectSetting from '/@/settings/projectSetting';
 
-import { updateHeaderBgColor, updateSidebarBgColor } from '/src/logics/theme/updateBackground';
-import { updateColorWeak } from '/src/logics/theme/updateColorWeak';
-import { updateGrayMode } from '/src/logics/theme/updateGrayMode';
-import { updateDarkTheme } from '/src/logics/theme/dark';
-import { changeTheme } from '/src/logics/theme';
+import { updateHeaderBgColor, updateSidebarBgColor } from '/@/logics/theme/updateBackground';
+import { updateColorWeak } from '/@/logics/theme/updateColorWeak';
+import { updateGrayMode } from '/@/logics/theme/updateGrayMode';
+import { updateDarkTheme } from '/@/logics/theme/dark';
+import { changeTheme } from '/@/logics/theme';
 
-import { useAppStore } from '/src/store/modules/app';
-import { useLocaleStore } from '/src/store/modules/locale';
+import { useAppStore } from '/@/store/modules/app';
+import { useLocaleStore } from '/@/store/modules/locale';
 
-import { getCommonStoragePrefix, getStorageShortName } from '/src/utils/env';
+import { getCommonStoragePrefix, getStorageShortName } from '/@/utils/env';
 
 import { primaryColor } from '../../build/config/themeConfig';
-import { Persistent } from '/src/utils/cache/persistent';
-import { deepMerge } from '/src/utils';
-import { ThemeEnum } from '/src/enums/appEnum';
+import { Persistent } from '/@/utils/cache/persistent';
+import { deepMerge } from '/@/utils';
+import { ThemeEnum } from '/@/enums/appEnum';
 
 // Initial project configuration
 export function initAppConfigStore() {
@@ -88,12 +88,21 @@ export function clearObsoleteStorage() {
 
 function initCustomSetting(){
   const appStore = useAppStore();
-  const customSetting = {
-    signInDesc: '开箱即用的中流程引擎',
-    signInTitle: '',
-    appIcon: '',
-    projectName: '',
-    projectLogo: ''
-  };
-  appStore.setProjectConfig({customSetting});
+  // getSystemSettings().then(res=>{
+  //   setTimeout(()=>{
+
+      const customSetting = {
+        signInDesc: '开箱即用的中流程引擎',
+        signInTitle: '',
+        appIcon: '',
+        projectName: '',
+        projectLogo: ''
+      };
+
+      appStore.setProjectConfig({customSetting});
+      // debugger;
+    // }, 4000);
+
+    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', res);
+  // });
 }

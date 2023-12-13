@@ -22,14 +22,14 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, watch } from 'vue';
-  import { BasicModal } from '/src/components/Modal';
+  import { BasicModal } from '/@/components/Modal';
   import { previewProps } from './props';
   import { Button, Tag, Upload, Modal } from 'ant-design-vue';
   import { PlusOutlined } from '@ant-design/icons-vue';
   import type { UploadProps } from 'ant-design-vue';
-  import { Upload as uploadApi,fileInfo } from '/src/api/sys/file';
+  import { Upload as uploadApi,fileInfo } from '/@/api/sys/file';
 import { isArray } from '@vue/shared';
-import { useMessage } from '/src/hooks/web/useMessage';
+import { useMessage } from '/@/hooks/web/useMessage';
 export default defineComponent({
   name: 'ImageUpload',
   props: previewProps,

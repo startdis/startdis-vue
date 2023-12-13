@@ -1,12 +1,12 @@
-import type { Menu } from '/src/router/types';
+import type { Menu } from '/@/router/types';
 import { ref, onBeforeMount, unref, Ref, nextTick } from 'vue';
-import { getMenus } from '/src/router/menus';
+import { getMenus } from '/@/router/menus';
 import { cloneDeep } from 'lodash-es';
-import { filter, forEach } from '/src/utils/helper/treeHelper';
-import { useGo } from '/src/hooks/web/usePage';
-import { useScrollTo } from '/src/hooks/event/useScrollTo';
+import { filter, forEach } from '/@/utils/helper/treeHelper';
+import { useGo } from '/@/hooks/web/usePage';
+import { useScrollTo } from '/@/hooks/event/useScrollTo';
 import { onKeyStroke, useDebounceFn } from '@vueuse/core';
-import { useI18n } from '/src/hooks/web/useI18n';
+import { useI18n } from '/@/hooks/web/useI18n';
 
 export interface SearchResult {
   name: string;

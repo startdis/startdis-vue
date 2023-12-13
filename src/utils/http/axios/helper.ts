@@ -1,4 +1,4 @@
-import { isObject, isString } from '/src/utils/is';
+import { isObject, isString } from '/@/utils/is';
 
 const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 

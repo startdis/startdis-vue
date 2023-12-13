@@ -1,9 +1,9 @@
-import type { BasicColumn } from '/src/components/Table/src/types/table';
+import type { BasicColumn } from '/@/components/Table/src/types/table';
 
 import { h, Ref } from 'vue';
 
 import EditableCell from './EditableCell.vue';
-import { isArray } from '/src/utils/is';
+import { isArray } from '/@/utils/is';
 
 interface Params {
   text: string;

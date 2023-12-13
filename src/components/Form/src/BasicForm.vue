@@ -48,29 +48,29 @@
   import FormAction from './components/FormAction.vue';
 
   import { dateItemType } from './helper';
-  import { dateUtil } from '/src/utils/dateUtil';
+  import { dateUtil } from '/@/utils/dateUtil';
 
   // import { cloneDeep } from 'lodash-es';
-  import { deepMerge } from '/src/utils';
+  import { deepMerge } from '/@/utils';
 
   import { useFormValues } from './hooks/useFormValues';
   import useAdvanced from './hooks/useAdvanced';
   import { useFormEvents } from './hooks/useFormEvents';
   import { createFormContext } from './hooks/useFormContext';
   import { useAutoFocus } from './hooks/useAutoFocus';
-  import { useModalContext } from '/src/components/Modal';
+  import { useModalContext } from '/@/components/Modal';
   import { useDebounceFn } from '@vueuse/core';
 
   import { basicProps } from './props';
-  import { useDesign } from '/src/hooks/web/useDesign';
+  import { useDesign } from '/@/hooks/web/useDesign';
   import { cloneDeep } from 'lodash-es';
-  import { isFunction, isArray } from '/src/utils/is';
+  import { isFunction, isArray } from '/@/utils/is';
 
   export default defineComponent({
     name: 'BasicForm',
     components: { FormItem, Form, Row, FormAction },
     props: basicProps,
-    emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],
+    emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change','disabled'],
     setup(props, { emit, attrs }) {
       const formModel = reactive<Recordable>({});
       const modalFn = useModalContext();

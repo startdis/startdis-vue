@@ -2,18 +2,18 @@ import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-rout
 
 import { toRaw, unref } from 'vue';
 import { defineStore } from 'pinia';
-import { store } from '/src/store';
+import { store } from '/@/store';
 
-import { useGo, useRedo } from '/src/hooks/web/usePage';
-import { Persistent } from '/src/utils/cache/persistent';
+import { useGo, useRedo } from '/@/hooks/web/usePage';
+import { Persistent } from '/@/utils/cache/persistent';
 
-import { PageEnum } from '/src/enums/pageEnum';
-import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/src/router/routes/basic';
-import { getRawRoute } from '/src/utils';
-import { MULTIPLE_TABS_KEY } from '/src/enums/cacheEnum';
+import { PageEnum } from '/@/enums/pageEnum';
+import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/@/router/routes/basic';
+import { getRawRoute } from '/@/utils';
+import { MULTIPLE_TABS_KEY } from '/@/enums/cacheEnum';
 
-import projectSetting from '/src/settings/projectSetting';
-import { useUserStore } from '/src/store/modules/user';
+import projectSetting from '/@/settings/projectSetting';
+import { useUserStore } from '/@/store/modules/user';
 
 export interface MultipleTabState {
   cacheTabList: Set<string>;
@@ -134,7 +134,7 @@ export const useMultipleTabStore = defineStore({
       // Existing pages, do not add tabs repeatedly
       const tabHasExits = this.tabList.some((tab, index) => {
         updateIndex = index;
-        return (tab.fullPath || tab.path) === (fullPath || path);
+        return (tab.path || tab.fullPath) === (path || fullPath);
       });
 
       // If the tab already exists, perform the update operation
@@ -201,7 +201,7 @@ export const useMultipleTabStore = defineStore({
         // There is only one tab, then jump to the homepage, otherwise jump to the right tab
         if (this.tabList.length === 1) {
           const userStore = useUserStore();
-          toTarget = userStore?.homePath || PageEnum.BASE_HOME;
+          toTarget = userStore.getUserInfo.homePath || PageEnum.BASE_HOME;
         } else {
           //  Jump to the right tab
           const page = this.tabList[index + 1];

@@ -20,8 +20,8 @@
   import type { PropType } from 'vue';
   import { defineComponent, reactive, onMounted, ref, toRef, toRefs } from 'vue';
   import { Skeleton } from 'ant-design-vue';
-  import { useTimeoutFn } from '/src/hooks/core/useTimeout';
-  import { useIntersectionObserver } from '/src/hooks/event/useIntersectionObserver';
+  import { useTimeoutFn } from '/@/hooks/core/useTimeout';
+  import { useIntersectionObserver } from '/@/hooks/event/useIntersectionObserver';
 
   interface State {
     isInit: boolean;
